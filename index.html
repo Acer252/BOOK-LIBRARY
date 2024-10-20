@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books UI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">BO9KS</div>
+        <div class="nav">
+            <button class="nav-btn">Books</button>
+            <button class="nav-btn">AudioBooks</button>
+            <div class="user-icons">
+                <i class="bookmark-icon">🔖</i>
+                <i class="cart-icon">🛒</i>
+                <div class="profile-dropdown-container">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="profile-dropdown" style="display: none;">
+                        <a>Profile</a>
+                        <a href="login.html"><i class="fa-solid fa-right-from-bracket"
+                                style="color: red;"></i><span>Logout</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-section">
+        <div class="new-trending">
+            <h1>New & Trending</h1>
+            <p>Explore new worlds from authors</p>
+            <input type="text" id="search" placeholder="Titles, author, or topics">
+        </div>
+        <div class="main-book">
+            <img src="book-cover.jpg" alt="Main Book">
+        </div>
+        <div class="author-week">
+            <h3>Author of the Week</h3>
+            <div class="author-details">
+                <img src="author.jpg" alt="Author">
+                <p>Stephen King Collection<br>78 books</p>
+            </div>
+        </div>
+        <div class="last-listened">
+            <h3>Last Listened</h3>
+            <div class="audio-details">
+                <img src="audiobook-cover.jpg" alt="Audiobook">
+                <p>False Witness: A Novel</p>
+                <div class="audio-controls">
+                    <button>⏸️</button>
+                    <button>⏮️</button>
+                    <button>⏭️</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bestsellers-section">
+        <h2>Recent Bestsellers</h2>
+        <div class="bestsellers">
+            <div class="book-card" data-title="SOUL" data-author="OLIVIA WILSON" data-genre="Thriller"
+                data-publish-date="2022-05-01">
+                <img src="book1.jpg" alt="SOUL" class="book-cover">
+                <div class="book-info">
+                    <h3>SOUL</h3>
+                    <p class="author">Author: OLIVIA WILSON</p>
+                    <p class="genre">Genre: Thriller</p>
+                    <p class="publish-date">Published: 24-11-1993</p>
+                    <button class="borrow-btn" data-title="SOUL">Borrow Now</button>
+                    <button class="history-btn" data-title="SOUL">Borrow History</button>
+                    <div class="borrow-history" style="display: none;">
+                        <p class="author"><span>Author:</span> OLIVIA WILSON</p>
+                        <p class="borrowed-times"><span>Borrowed:</span> 0 times</p>
+                        <p class="last-borrowed"><span>Last Borrowed:</span> N/A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card" data-title="THE YOUNG WIZARD" data-author="AARON LOEB" data-genre="Fiction"
+                data-publish-date="01-06-2024">
+                <img src="book2.webp" alt="THE YOUNG WIZARD" class="book-cover">
+                <div class="book-info">
+                    <h3>THE YOUNG WIZARD</h3>
+                    <p class="author">Author: AARON LOEB</p>
+                    <p class="genre">Genre: Fiction</p>
+                    <p class="publish-date">Published: 01-06-2024</p>
+                    <button class="borrow-btn" data-title="THE YOUNG WIZARD">Borrow Now</button>
+                    <button class="history-btn" data-title="THE YOUNG WIZARD">Borrow History</button>
+                    <div class="borrow-history" style="display: none;">
+                        <p class="borrowed-times"><span>Borrowed:</span> 0 times</p>
+                        <p class="last-borrowed"><span>Last Borrowed:</span> N/A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card" data-title="INCURSION" data-author="Kevin McLaughlin" data-genre="Fantasy Fiction"
+                data-publish-date="17 June 2020">
+                <img src="book3.png" alt="INCURSION" class="book-cover">
+                <div class="book-info">
+                    <h3>INCURSION</h3>
+                    <p class="author">Author: Kevin McLaughlin</p>
+                    <p class="genre">Genre: Fantasy Fiction</p>
+                    <p class="publish-date">Published: 17 June 2020</p>
+                    <button class="borrow-btn" data-title="INCURSION">Borrow Now</button>
+                    <button class="history-btn" data-title="INCURSION">Borrow History</button>
+                    <div class="borrow-history" style="display: none;">
+                        <p class="borrowed-times"><span>Borrowed:</span> 0 times</p>
+                        <p class="last-borrowed"><span>Last Borrowed:</span> N/A</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card" data-title="WALK INTO THE SHADOW" data-author="ESTELLE DARCY" data-genre="Thriller"
+                data-publish-date="01-10-2022">
+                <img src="book4.webp" alt="WALK INTO THE SHADOW" class="book-cover">
+                <div class="book-info">
+                    <h3>WALK INTO THE SHADOW</h3>
+                    <p class="author">Author: ESTELLE DARCY</p>
+                    <p class="genre">Genre: Thriller</p>
+                    <p class="publish-date">Published: 2022-10-01</p>
+                    <button class="borrow-btn" data-title="WALK INTO THE SHADOW">Borrow Now</button>
+                    <button class="history-btn" data-title="WALK INTO THE SHADOW">Borrow History</button>
+                    <div class="borrow-history" style="display: none;">
+                        <p class="borrowed-times"><span>Borrowed:</span> 0 times</p>
+                        <p class="last-borrowed"><span>Last Borrowed:</span> N/A</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Borrow History -->
+    <div id="borrowHistoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-body2">
+                    <!-- Add these elements to show Borrowed Times and Last Borrowed -->
+                    <div id="modalBorrowedTimes" class="borrowed-info"></div>
+                    <div id="modalLastBorrowed" class="borrowed-info"></div>
+                    <!-- Existing elements for the history -->
+                    <div id="borrowHistoryHeading"></div>
+                    <div id="borrowHistoryList" style="padding: 10px;"></div>
+                </div>
+                <div class="modal-body1">
+                    <h2 id="modalBookTitle" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    </h2>
+                    <img id="modalBookImage" class="modal-book-image" />
+                    <div class="author" id="modalAuthor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
