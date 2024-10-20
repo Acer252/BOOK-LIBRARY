@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up | Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+    <link href="login.css" rel="stylesheet">
+</head>
+
+<body>
+    <main></main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card" style="width: 700px;">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group row mt-2">
+                            <label for="name" class="col-md-4 text-md-right">User Name</label>
+                            <div class="col-md-8">
+                                <input type="text" id="name" class="form-control" name="name" autofocus
+                                    placeholder="Enter your Name">
+                                <span class="text-danger" id="nameErr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="email_address" class="col-md-4 text-md-right">Email Address</label>
+                            <div class="col-md-8">
+                                <input type="text" id="email_address" class="form-control" name="email" autofocus
+                                    placeholder="Enter your Email">
+                                <span class="text-danger" id="emailErr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="password" class="col-md-4 text-md-right">Password</label>
+                            <div class="col-md-8">
+                                <input type="password" id="password" class="form-control" name="password" autofocus
+                                    placeholder="Enter your Password">
+                                <span class="text-danger" id="passwordErr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="confirm_password" class="col-md-4 text-md-right">Confirm Password</label>
+                            <div class="col-md-8">
+                                <input type="password" id="confirm_password" class="form-control"
+                                    name="confirm_password" autofocus placeholder="Confirm your Password">
+                                <span class="text-danger" id="confirmpasswordErr"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-8">
+                                <button type="button" id="saveUser" class="btn btn-primary"> Login </button>
+                                <p class="text-black mt-2 mb-2">Already have an Account<a href="index.html"
+                                        style="text-decoration: none;"> Login </a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="login.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB6w8DOcI5fU5melzGa1MjWQf-2feJj08w",
+            authDomain: "book-library-cdd8c.firebaseapp.com",
+            databaseURL: "https://book-library-cdd8c-default-rtdb.firebaseio.com",
+            projectId: "book-library-cdd8c",
+            storageBucket: "book-library-cdd8c.appspot.com",
+            messagingSenderId: "626259447872",
+            appId: "1:626259447872:web:edbbb0835eba1c663b0fa5",
+            measurementId: "G-93278E1QN2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        function saveUserToFirebase() {
+            const email = document.getElementById('email_address').value;
+            const password = document.getElementById('password').value;
+
+            if (validateSignUpInputCredentials()) {
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        push(ref(db, '/registered_users'), {
+                            userid: user.uid,
+                            email: user.email
+                        }).then(() => {
+                            alert('Successfully Registered');
+                            window.location.href = 'login.html';
+                        }).catch((error) => {
+                            console.error("Database Error:", error.message);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Authentication Error:", error.message);
+                    });
+            }
+        }
+
+        $("#saveUser").on("click", function () {
+            saveUserToFirebase();
+        });
+
+        function validateSignUpInputCredentials() {
+            const email = document.getElementById('email_address').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            let isValid = true;
+
+            // Email validation
+            if (email === '') {
+                document.getElementById('emailErr').innerText = 'Email is required.';
+                isValid = false;
+            } else {
+                document.getElementById('emailErr').innerText = '';
+            }
+
+            // Password validation
+            if (password === '') {
+                document.getElementById('passwordErr').innerText = 'Password is required.';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('passwordErr').innerText = 'Passwords do not match.';
+                isValid = false;
+            } else {
+                document.getElementById('passwordErr').innerText = '';
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>

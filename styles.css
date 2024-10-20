@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f8e9da;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-btn {
+    background-color: #e6bb82;
+    border: none;
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.user-icons i {
+    margin-left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Profile Dropdown Styles */
+.profile-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 45px;
+    /* Adjust based on your header height */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: none;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.profile-dropdown a:last-child {
+    border-bottom: none;
+}
+
+span {
+    font-weight: bold;
+    font-size: larger;
+    padding-left: 10px;
+}
+
+.main-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+
+.new-trending {
+    width: 30%;
+}
+
+.new-trending h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.new-trending input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.main-book img {
+    width: 200px;
+    height: auto;
+}
+
+.author-week,
+.last-listened {
+    width: 20%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.author-week img,
+.last-listened img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.bestsellers-section {
+    margin: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bestsellers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-card img {
+    width: 250px;
+    height: 350px;
+}
+
+.book {
+    text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px 20px 20px 0px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: left;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    /* Use flexbox to arrange children in a row */
+    justify-content: space-between;
+    /* Space between items */
+    align-items: center;
+    /* Align items at the start */
+}
+
+#modalBookTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    overflow: hidden;
+    /* Hide overflow */
+    text-overflow: ellipsis;
+    /* Show ellipsis for overflowed text */
+}
+
+.modal-body1 {
+    width: 45%;
+    margin-right: 100px;
+    /* Adjust spacing */
+    text-align: center;
+    /* Center align text for better look */
+}
+
+.modal-body1 .author {
+    text-align: center;
+    /* Center align text for better look */
+}
+
+.modal-body2 {
+    width: 100%;
+    margin-right: 300px;
+    /* Adjust spacing */
+    text-align: center;
+    /* Center align text for better look */
+}
+
+.modal-book-image {
+    width: 150px;
+    height: 250px;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+
+.modal-text {
+    flex: 1;
+    /* Takes all the remaining space */
+    padding-left: 20px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* Adds some spacing between text and image */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.borrowed-times,
+.last-borrowed {
+    margin: 5px 0;
+}
+
+h2 {
+    text-align: left;
+    color: #333;
+}
+
+/* Bestsellers Section */
+.bestsellers-section {
+    padding: 20px;
+}
+
+/* Cards for each book */
+.bestsellers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.book-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Book Cover */
+.book-cover {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Book Info */
+.book-info {
+    margin-top: 15px;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.author,
+.genre,
+.publish-date {
+    text-align: start;
+}
+
+.history-btn,
+.borrow-btn {
+    background-color: #5f9ea0;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+.history-btn:hover,
+.borrow-btn:hover {
+    background-color: #468b8b;
+}
+
+/* Borrow History */
+.borrow-history {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+    display: none;
+    /* Hidden initially */
+}
+
+.borrow-history p {
+    margin: 5px 0;
+}
+
+.borrow-history span,
+#borrowHistoryModal .modal-body span {
+    font-weight: bold;
+}
+
+#borrowHistoryHeading {
+    display: flex;
+    flex-direction: column;
+}
+
+#borrowHistoryList {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.borrowed-info {
+    /*font-weight: bold;*/
+    margin-bottom: 10px;
+    /* Adjust space between these elements and the borrow history */
+}

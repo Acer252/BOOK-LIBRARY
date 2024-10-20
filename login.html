@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+    <link href="login.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="card" style="width: 700px;">
+                    <div class="card-header">Login</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row mt-2">
+                                <label for="email" class="col-md-4 text-md-right">Email Address</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="email" class="form-control" name="email" autofocus
+                                        placeholder="Enter your Email">
+                                    <span class="text-danger" id="emailErr"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <label for="password" class="col-md-4 text-md-right">Password</label>
+                                <div class="col-md-8">
+                                    <input type="password" id="password" class="form-control" name="password" autofocus
+                                        placeholder="Enter your Password">
+                                    <span class="text-danger" id="passwordErr"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember"> Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                    <button type="button" id="authenticateUser" class="btn btn-primary"
+                                        onclick="handleLogin()"> Login </button>
+                                    <p class="text-black mt-2 mb-2">I do not have an Account<a href="signup.html"
+                                            style="text-decoration: none;"> Sign me up</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="login.js"></script>
+    <script>
+        function handleLogin() {
+            const email = document.getElementById('email').value;
+            localStorage.setItem('username', email); // Save email in localStorage
+            window.location.href = 'index.html'; // Redirect to Books UI
+        }
+    </script>
+    <script type="module">
+        // Import the necessary Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyB6w8DOcI5fU5melzGa1MjWQf-2feJj08w",
+            authDomain: "book-library-cdd8c.firebaseapp.com",
+            databaseURL: "https://book-library-cdd8c-default-rtdb.firebaseio.com",
+            projectId: "book-library-cdd8c",
+            storageBucket: "book-library-cdd8c.appspot.com",
+            messagingSenderId: "626259447872",
+            appId: "1:626259447872:web:edbbb0835eba1c663b0fa5",
+            measurementId: "G-93278E1QN2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        function validateLoginInputCredentials() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            let isValid = true;
+
+            // Email validation
+            if (email === '') {
+                document.getElementById('emailErr').innerText = 'Email is required.';
+                isValid = false;
+            } else {
+                document.getElementById('emailErr').innerText = '';
+            }
+
+            // Password validation
+            if (password === '') {
+                document.getElementById('passwordErr').innerText = 'Password is required.';
+                isValid = false;
+            } else {
+                document.getElementById('passwordErr').innerText = '';
+            }
+
+            return isValid;
+        }
+
+        function authenticateFromFirebase() {
+            if (validateLoginInputCredentials()) {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredentials) => {
+                        const user = userCredentials.user;
+                        localStorage.setItem('loggedin_user_id', user.uid);
+                        localStorage.setItem('loggedin_user_email', user.email);
+                        setTimeout(() => location.href = "index.html", 1000);
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        console.error("Authentication Error:", errorMessage);
+                    });
+            }
+        }
+
+        $("#authenticateUser").on("click", function () {
+            authenticateFromFirebase();
+        });
+    </script>
+
+</body>
+
+</html>
